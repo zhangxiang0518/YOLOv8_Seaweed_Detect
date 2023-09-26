@@ -16,9 +16,9 @@ class DataProcess {
 
     companion object {
         const val BATCH_SIZE = 1
-        const val INPUT_SIZE = 224
+        const val INPUT_SIZE = 640
         const val PIXEL_SIZE = 3
-        const val FILE_NAME = "yolov8n-cls.onnx"
+        const val FILE_NAME = "last.onnx"
         const val LABEL_NAME = "yolov8n-cls.txt"
     }
 
@@ -69,6 +69,11 @@ class DataProcess {
             true
         )
     }
+//    fun imageToBitmap(imageProxy: ImageProxy): Bitmap {
+//        val bitmap = imageProxy.toBitmap()
+//        val scaledBitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, true)
+//        return scaledBitmap
+//    }
 
 
     fun bitmapToFloatBuffer(bitmap: Bitmap): FloatBuffer {

@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         val outputs = resultTensor.get(0).value as Array<*>
         val index = dataProcess.getHighConf(outputs)
         val name = dataProcess.getClassName(index)
-        val confidence = (outputs[0] as FloatArray)[index!!]
+        val confidence = index?.let { (outputs[0] as FloatArray)[it] }
 
         runOnUiThread {
             name?.let {
@@ -91,7 +91,9 @@ class MainActivity : AppCompatActivity() {
                     textView.setTextColor(Color.BLACK)
                 }
             }
-            confidenceTextView.text = String.format("Precision rate: %.2f%%", confidence * 100)
+            confidence?.let {
+                confidenceTextView.text = String.format("Precision rate: %.2f%%", it * 100f)
+            }
         }
     }
 

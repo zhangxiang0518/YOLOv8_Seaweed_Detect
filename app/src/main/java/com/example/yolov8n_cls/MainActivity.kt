@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == 1) {
             grantResults.forEach {
                 if (it != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "권한을 허용하지 않으면 사용할 수 없습니다!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "You cannot use it unless you allow permission!", Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }

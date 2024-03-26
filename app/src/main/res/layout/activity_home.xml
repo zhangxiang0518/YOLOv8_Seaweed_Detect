@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/bg4">
 
-    <!-- AppBarLayout with Toolbar for Header -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,222 +14,113 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/toolbar_gradient"
-            app:title="Seaweed Quality Detector" />
+            android:background="@drawable/toolbar_gradient">
+
+            <!-- 使用 LinearLayout 容纳 ImageView 和 TextViews -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- ImageView 用于显示 logo/image -->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="start|center_vertical"
+                    android:layout_weight="1">
+
+                    <!-- TextView 用于 "Dr" -->
+                    <ImageView
+                        android:layout_width="61dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/img_head" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="C+"
+                        android:textSize="25sp"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                    <!-- TextView 用于 "C" 的不同样式 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weed"
+                        android:textColor="@android:color/white"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <!-- TextView 用于 "weed" -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vision"
+                        android:textSize="25sp"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Main Content wrapped in a ScrollView -->
-    <ScrollView
+    <FrameLayout
+        android:id="@+id/contentFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:layout_above="@+id/logoImageView"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/magnifierButton"
+            android:layout_width="141dp"
+            android:layout_height="141dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/mg"
+            android:contentDescription="@string/search_button_description" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:text="Tap &amp; Scan"
+            android:layout_marginTop="40dp"
+            android:textStyle="bold"
+            android:textColor="#3DD0F2"
+            android:textSize="38sp" />
 
-            <!-- Title & Description -->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Analyze Seaweed Quality in Real-Time"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+        <!-- Add other UI components here -->
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Harness the power of AI to detect seaweed quality with just a snap. Ensure optimal harvest times, determine the best quality, and maximize your seaweed farming returns."
-                android:textColor="#000000"
-                android:textSize="16sp" />
+    </FrameLayout>
 
-        <!-- Features Section -->
+     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_anchor="@+id/contentFrame"
+        app:layout_anchorGravity="center">
 
-        <!-- Impurity Detection Feature -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
+        <ImageView
+            android:id="@+id/logoImageView1"
+            android:layout_width="110dp"
+            android:layout_height="86dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/drcweedlogo" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:background="#FFFFFF"
-                android:padding="16dp">
+        <ImageView
+            android:id="@+id/logoImageView2"
+            android:layout_width="129dp"
+            android:layout_height="140dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="200dp"
+            android:src="@drawable/umlogo" />
+    </RelativeLayout>
 
-                <!-- Layout for the icon with colorPrimary background -->
-                <LinearLayout
-                    android:layout_width="50dp"
-                    android:layout_height="58dp"
-                    android:background="@drawable/rounded_corner_bg"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    app:srcCompat="@drawable/search_white_24dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Impurity Detection"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Detect impurities like shells, grass, and colored seaweed amidst your seaweed harvest ensuring a pure batch."
-                    android:textColor="#000000"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-
-            <!-- Offline Detection Feature -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:background="#FFFFFF"
-                    android:padding="16dp">
-
-                    <!-- Layout for the icon with colorPrimary background -->
-                    <LinearLayout
-                        android:layout_width="50dp"
-                        android:layout_height="58dp"
-                        android:background="@drawable/rounded_corner_bg"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/wifi_off_white_24dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Offline Detection"
-                            android:textColor="#000000"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Even without internet, assess seaweed quality seamlessly."
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Fast & Accurate Feature -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:background="#FFFFFF"
-                    android:padding="16dp">
-
-                    <!-- Layout for the icon with colorPrimary background -->
-                    <LinearLayout
-                        android:layout_width="50dp"
-                        android:layout_height="58dp"
-                        android:background="@drawable/rounded_corner_bg"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:srcCompat="@drawable/bolt_white_24dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Fast &amp; Accurate"
-                            android:textColor="#000000"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Experience quick and precise results every time."
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-
-            <!-- Continue with other components or close the parent layout -->
-
-            <!-- Floating Action Button for Camera at the bottom -->
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/cameraButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|bottom"
-                android:layout_margin="16dp"
-                app:srcCompat="@drawable/local_see_black_24dp"
-                app:tint="#FFFFFF" />
-
-        </LinearLayout>
-    </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

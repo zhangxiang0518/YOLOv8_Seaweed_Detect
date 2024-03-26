@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import androidx.appcompat.app.AppCompatActivity
 
 class HomeActivity : AppCompatActivity() {
@@ -12,8 +13,9 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val cameraButton: ImageButton = findViewById(R.id.cameraButton)  // Change this line
-        cameraButton.setOnClickListener {
+        val magnifierButton: ImageButton = findViewById(R.id.magnifierButton)
+        magnifierButton.setOnClickListener {
+            // Start MainActivity on click
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
